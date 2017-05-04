@@ -1,0 +1,22 @@
+{
+    "name": "dmandrade/iweventos-api-client",
+    "type": "library",
+    "description": "IWEventos api client",
+    "keywords": ["iweventos", "api", "client", "guzzle"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Danilo Andrade",
+            "email": "danilo@daniloandrade.net",
+            "homepage": "https://daniloandrade.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Dmandrade\\IWEventos\\Api\\" : "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "~6.2"
+    }
+}

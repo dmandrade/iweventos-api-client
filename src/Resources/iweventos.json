@@ -1,0 +1,248 @@
+{
+  "name": "IWEventos Client",
+  "apiVersion": "0.1.0",
+  "description": "Guzzle service description of IWEventos API",
+  "operations": {
+    "abstract.iweventos": {
+      "parameters": {
+        "access_token": {
+          "type":"string",
+          "location": "header",
+          "description": "Your IWEventos access token",
+          "sentAs": "Authorization",
+          "required": true
+        }
+      }
+    },
+    "congressistasById": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/congressistas/{id}",
+      "summary": "Retorna os dados do congressista.",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "integer",
+          "description": "Identificador do congressista a ser detalhado.",
+          "required": true
+        }
+      }
+    },
+    "congressistasBy": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "POST",
+      "uri": "/api/congressistas",
+      "summary": "Retorna os dados do congressista.",
+      "parameters": {
+        "cpf": {
+          "location": "body",
+          "type": "string",
+          "description": "CPF do congressista a ser detalhado.",
+          "required": false
+        },
+        "email": {
+          "location": "body",
+          "type": "string",
+          "description": "E-mail do congressista a ser detalhado.",
+          "required": true
+        },
+        "senha": {
+          "location": "body",
+          "type": "string",
+          "description": "Senha do congressista a ser detalhado.",
+          "required": true
+        }
+      }
+    },
+    "datas": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/datas/{data}",
+      "summary": "Retorna as datas do evento.",
+      "parameters": {
+        "data": {
+          "location": "uri",
+          "type": "string",
+          "description": "Data específica para a detalhar. Example: yyyy-mm-dd.",
+          "required": false
+        }
+      }
+    },
+    "salas": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/salas/{sala}",
+      "summary": "Retorna as salas do evento.",
+      "parameters": {
+        "sala": {
+          "location": "uri",
+          "type": "integer",
+          "description": "Identificador da sala para detalhar.",
+          "required": false
+        }
+      }
+    },
+    "tipoAtividades": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/tiposatividades/{tipoatividade}",
+      "summary": "Retorna os tipos de atividades do evento.",
+      "parameters": {
+        "tipoatividade": {
+          "location": "uri",
+          "type": "integer",
+          "description": "Identificador de um tipo de atividade para detalhar.",
+          "required": false
+        }
+      }
+    },
+    "eventos": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/eventos/{evento}",
+      "summary": "Retorna os dados básicos do evento.",
+      "parameters": {
+        "evento": {
+          "location": "uri",
+          "type": "integer",
+          "description": "Identificador do evento a ser detalhado.",
+          "required": false
+        }
+      }
+    },
+    "funcoesPalestrantes": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/funcoespalestrantes/{funcao}",
+      "summary": "Retorna as funções para palestrantes existentes no evento.",
+      "parameters": {
+        "funcao": {
+          "location": "uri",
+          "type": "integer",
+          "description": "Identificador da função de palestrante a ser detalhada.",
+          "required": false
+        },
+        "palestrante": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador de um palestrante para detalhamento de sua função.",
+          "required": false
+        }
+      }
+    },
+    "palestrantes": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/palestrantes/{palestrante}",
+      "summary": "Retorna os palestrantes do evento.",
+      "parameters": {
+        "palestrante": {
+          "location": "uri",
+          "type": "integer",
+          "description": "Identificador de um palestrante para detalhamento.",
+          "required": false
+        },
+        "atividade": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador uma atividade para busca de palestrantes da mesma.",
+          "required": false
+        },
+        "subatividade": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador uma subatividade para busca de palestrantes da mesma.",
+          "required": false
+        },
+        "congressista": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador um congressista para busca de palestrantes do mesmo.",
+          "required": false
+        },
+        "publico": {
+          "location": "query",
+          "type": "integer",
+          "description": "Filtra palestrantes somente públicos de acordo com as configurações do evento.",
+          "required": false
+        }
+      }
+    },
+    "atividades": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/atividades/{id}",
+      "summary": "Retorna as atividades do evento.",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "integer",
+          "description": "Identificador de uma atividade para detalhe.",
+          "required": false
+        },
+        "tipo": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador do tipo de atividade.",
+          "required": false
+        },
+        "sala": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador da sala da atividade.",
+          "required": false
+        },
+        "data": {
+          "location": "query",
+          "type": "integer",
+          "description": "Data da atividade Example: yyyy-mm-dd.",
+          "required": false
+        },
+        "palestrante": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador do palestrante.",
+          "required": false
+        },
+        "congressista": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador do congressistao.",
+          "required": false
+        },
+        "publico": {
+          "location": "query",
+          "type": "integer",
+          "description": "Filtra atividades públicas de acordo com as configurações do evento.",
+          "required": false
+        }
+      }
+    },
+    "subatividades": {
+      "extends": "abstract.iweventos",
+      "httpMethod": "GET",
+      "uri": "/api/subatividades/{subatividade}",
+      "summary": "Retorna as subatividades do evento.",
+      "parameters": {
+        "subatividade": {
+          "location": "uri",
+          "type": "integer",
+          "description": "Identificador uma subatividade espesífica para detalhamento.",
+          "required": false
+        },
+        "atividade": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador de uma atividade para filtrar suas subatividades.",
+          "required": true
+        },
+        "palestrante": {
+          "location": "query",
+          "type": "integer",
+          "description": "Identificador de um palestrante filtrar sua subatividade.",
+          "required": false
+        }
+      }
+    }
+  }
+}
